@@ -1,15 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Dropdown from '../components/DropDown';
+import { useDispatch, useSelector } from 'react-redux';
+import { getData, postData } from '../redux/data/action';
+import { getSignup } from '../redux/auth/authAction';
 
 function CreateExpense() {
 
-    const localData = JSON.parse(localStorage.getItem('data'))||[];
+    // const localData = JSON.parse(localStorage.getItem('data'))||[];
       
     const[name,setName]=useState([])
     const[date,setDate]=useState([])
     const[category,setCategory]=useState([])
     const[expense,setExpense]=useState([])
     const[amount,setAmount]=useState([])
+     const dispatch=useDispatch()
+
+     const userData=useSelector((store)=>store.auth.getSignup)
+
+console.log("gatData",userData)
+
+useEffect(()=>{
+  dispatch(getSignup())
+},[])
+
+
 
     const handleName=(e)=>{
         let value=e.target.value 
@@ -31,42 +45,45 @@ function CreateExpense() {
               let value=e.target.value 
         setAmount(value)
     }
+
     const handleSubmit=()=>{
+      if(!name||!date||!amount){
+        alert("Please fill the form")
+      }
+      else{
         let data={
-            name:name,
+           name:name,
             date:date,
             category:category,
             expense:expense,
             amount:amount
 
-        }
-         console.log("check data",data)
-       
-        // localStorage.setItem("data",data)
-    
-        localStorage.setItem('data', JSON.stringify([...localData, data]));
-        alert("Data added successfully")
+      }
+      dispatch(postData(data))
+      alert("Data added")
+      }
+      
     }
 
-    console.log("localData",localData)
+    // console.log("localData",localData)
 
   return (
     <div>
-       <div style={{padding:20,border:"2px solid red"}}>
+       <div style={{padding:20}}>
        
-        <div style={{display:"flex",justifyContent:"center",padding:40,}}>
-<div style={{textAlign:"left",padding:20,gap:20,border:"2px solid red",display:"flex",flexDirection:"column",}}>
-       <label>Feilds </label>
+        <div style={{display:"flex",justifyContent:"center",padding:40}}>
+<div style={{textAlign:"left",padding:20,gap:20,border:"",display:"flex",flexDirection:"column",}}>
+       
        <hr></hr>
         <label>Name</label>
          <label>Date of Expense</label>
           <label>Category</label>
-           <label>Description</label>
+           <label>Expense</label>
            <label>Amount</label>
 </div>
 
-<div style={{padding:20,gap:20,border:"2px solid red",display:"flex",flexDirection:"column",}}>
- <label>Description </label>
+<div style={{padding:20,gap:20,border:"",display:"flex",flexDirection:"column",}}>
+
   <hr></hr>
 <input onChange={handleName} placeholder='name...'/>
 <input type='date' onChange={handleDate} placeholder='date...'/>
@@ -79,7 +96,7 @@ function CreateExpense() {
 </div>
 
         </div>
-        <button onClick={handleSubmit}>Submit</button>
+        <button style={{border:"1px solid black",borderRadius:20,padding:10,}} onClick={handleSubmit}>Submit</button>
        </div>
     </div>
   )

@@ -16,6 +16,10 @@ app.use("/signup",userControler)
 
 // app.use("/data",dataController)
 
+app.get('/',(req,res)=>{
+    res.send("hai")
+})
+
 
 
 
