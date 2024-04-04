@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { patchData } from '../redux/data/action'
-import Dropdown from '../components/DropDown'
 
 function Edit() {
     const navigate=useNavigate()
@@ -36,9 +35,6 @@ function Edit() {
         let value=e.target.value 
         setCategory(value)
     }
-//      const handleCategory = (e) => {
-//   setCategory(e);
-// };
     const handleDate=(e)=>{
         let value=e.target.value 
         setDate(value)
@@ -51,10 +47,9 @@ function Edit() {
             expense:expense,
             category:category
         }
-
         dispatch(patchData(data,id))
-    alert("Data updated")
-    navigate("/home")
+     
+
     }
 
     useEffect(()=>{
@@ -88,7 +83,6 @@ function Edit() {
     <div style={{display:"flex",justifyContent:"space-between",gap:60}}>
         <text>Category</text>
         <input onChange={handleCate} placeholder="category....."/>
-        {/* <Dropdown passValu={handleCategory}/> */}
     </div>
 <div style={{display:"flex",justifyContent:"space-between",gap:60}}>
         <text>Date of Expense</text>

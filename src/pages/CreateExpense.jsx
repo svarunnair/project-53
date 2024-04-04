@@ -69,9 +69,9 @@ useEffect(()=>{
 
   return (
     <div>
-       <div style={{padding:20}}>
+       <div style={{padding:50, display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
        
-        <div style={{display:"flex",justifyContent:"center",padding:40}}>
+        <div style={{display:"flex",justifyContent:"center",padding:40,border:'1px solid grey',borderRadius:30,width:"40%"}}>
 <div style={{textAlign:"left",padding:20,gap:20,border:"",display:"flex",flexDirection:"column",}}>
        
        <hr></hr>

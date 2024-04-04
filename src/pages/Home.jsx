@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { store } from '../redux/store';
@@ -10,6 +10,8 @@ function Home() {
   const navigate=useNavigate()
      const dispatch=useDispatch()
      const homeData=useSelector((store)=>store.data.getData)
+     const [name,setName]=useState("")
+     const [date,setDate]=useState("")
 
      console.log("homeData",homeData)
 
@@ -31,6 +33,26 @@ function Home() {
       console.log("DeleteIdd",id)
       alert("Data deleted")
       window.location.reload()
+     }
+
+     let sortName=homeData.map((item)=>{
+      return item.name
+     })
+
+     console.log("sort",sortName)
+
+const newName = sortName.sort((a, b) => {
+    return a.localeCompare(b);
+});
+
+console.log("After sorting:", newName);
+
+     const handleFilterName=()=>{
+      setName(newName)
+     }
+
+     const handleFilterDate=()=>{
+
      }
 
 
@@ -90,8 +112,8 @@ function Home() {
 
     </div>
     <div style={{display:"flex",marginTop:10,gap:"30px"}}>
-     <button style={{background:"#2F4F4F",color:"white",border:"2px solid grey",borderRadius:20,padding:10}} onClick={handleAdd} >Filter by date</button>
- <button style={{border:"2px solid grey",background:"#2F4F4F",color:"white",borderRadius:20,padding:10}} onClick={handleAdd} >Filter by Name</button>
+     <button style={{background:"#2F4F4F",color:"white",border:"2px solid grey",borderRadius:20,padding:10}} onClick={handleFilterDate} >Filter by date</button>
+ <button style={{border:"2px solid grey",background:"#2F4F4F",color:"white",borderRadius:20,padding:10}} onClick={handleFilterName} >Filter by Name</button>
   <button style={{border:"2px solid grey",background:"#2F4F4F",color:"white",borderRadius:20,padding:10}} onClick={handleAdd} >New Expense</button>
    </div>
     </div>
