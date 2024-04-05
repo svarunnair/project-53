@@ -68,7 +68,7 @@ const postLoginFailure=()=>{
 export const postSignup=(data)=>(dispatch)=>{
     dispatch(PostSignupRequest())
     return axios({
-        url:"http://localhost:2000/signup",
+        url:"https://interview-1-jgaq.onrender.com/signup",
         method:"POST",
         data
          })
@@ -86,7 +86,7 @@ export const postSignup=(data)=>(dispatch)=>{
 export const postLogin=(data)=>(dispatch)=>{
     dispatch(postLoginRequest())
     return axios({
-        url:"http://localhost:2000/signup/login",
+        url:"https://interview-1-jgaq.onrender.com/signup/login",
         method:"POST",
         data
          })
@@ -104,7 +104,7 @@ export const postLogin=(data)=>(dispatch)=>{
 export const getSignup=()=>(dispatch)=>{
     dispatch(getSignupRequest())
     return axios({
-        url:"http://localhost:2000/signup",
+        url:"https://interview-1-jgaq.onrender.com/signup",
         method:"GET",
  
          })

@@ -117,7 +117,7 @@ export const postData=(data)=>(dispatch)=>{
     console.log("nnnnnnnnnnnnnnnn",data)
     dispatch(postDataRequest())
     return axios({
-        url:"http://localhost:2000/signup/data",
+        url:"https://interview-1-jgaq.onrender.com/signup/data",
         method:'POST',
         data
     })
@@ -135,7 +135,7 @@ export const postData=(data)=>(dispatch)=>{
 export const getData=()=>(dispatch)=>{
     dispatch(getDataRequest())
     return axios({
-        url:"http://localhost:2000/signup/data",
+        url:"https://interview-1-jgaq.onrender.com/signup/data",
         method:'GET',
 
     })
@@ -151,7 +151,7 @@ export const getData=()=>(dispatch)=>{
 export const patchData=(data,id)=>(dispatch)=>{
     dispatch(patchDataRequest())
     return axios({
-        url:`http://localhost:2000/signup/${id}`,
+        url:`https://interview-1-jgaq.onrender.com/signup/${id}`,
         method:'PATCH',
         data
     })
@@ -167,7 +167,7 @@ export const patchData=(data,id)=>(dispatch)=>{
 export const deleteData=(id)=>(dispatch)=>{
     dispatch(deleteDataRequest())
     return axios({
-        url:`http://localhost:2000/signup/${id}`,
+        url:`https://interview-1-jgaq.onrender.com/signup/${id}`,
         method:'DELETE',
         
     })
@@ -184,7 +184,7 @@ export const deleteData=(id)=>(dispatch)=>{
 export const getParams=(id)=>(dispatch)=>{
     dispatch(getParamsRequest())
     return axios({
-        url:`http://localhost:2000/signup/data/${id}`,
+        url:`https://interview-1-jgaq.onrender.com/signup/data/${id}`,
         method:'GET',
     })
     .then((res)=>{
