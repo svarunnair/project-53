@@ -6,26 +6,6 @@ import { deleteData, getData } from '../redux/data/action';
 
 
 
-// const mainData=[
-//     {
-//     "name": "varun",
-//     "date":"2-1-2020",
-//     "category":"health",
-//     "expense":"200",
-//     "amount":"200",
-//     "update":"v@g"
-//     },
-//      {
-//     "name": "kiran",
-//     "date":"9-1-2020",
-//     "category":"book",
-//     "expense":"100",
-//     "amount":"100",
-//     "update":"k@g"
-//     },
-// ]
-
-
 
 function Home() {
   const navigate=useNavigate()
@@ -36,12 +16,6 @@ function Home() {
 
      const localData=localStorage.getItem("data")
      const parseData=JSON.parse(localData)||[]
-
-    //  console.log("LocalData",localData)
-
-    //  console.log("parseData",parseData)
-
-    //  console.log("...................",sort)
 
 
      const localEmail=localStorage.getItem("email")
@@ -62,9 +36,6 @@ function Home() {
 
      },[homeData])
 
-    
-
-     console.log("createrrrrrrrrrr",creator)
 
 
      useEffect(()=>{
@@ -79,9 +50,8 @@ function Home() {
      }
 
      const handleDelete=(id)=>{
-      // localStorage.removeItem()
+
       dispatch(deleteData(id))
-      // console.log("DeleteIdd",id)
       alert("Data deleted")
       window.location.reload()
      }
@@ -90,7 +60,6 @@ function Home() {
       return item.id
      })
 
-     console.log("Ckec;;;;",check)
 
 
      const handleFilterName=()=>{
@@ -98,7 +67,6 @@ function Home() {
   let sortName = homeData.sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
- console.log("oooooooo",sortName)
       setSort([...sortName])
      }
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getData, postData } from '../redux/data/action';
 import { useNavigate } from 'react-router-dom';
 import { getSignup } from '../redux/auth/authAction';
-import { v4 as uuidv4 } from 'uuid';
+
 
 function CreateExpense() {
 
@@ -75,8 +75,7 @@ console.log("emailllllllll",localEmail)
             email:localEmail
 
       }
-// localStorage.setItem("data",JSON.stringify([...localData,data]))
-      // localStorage.setItem("data",data)
+
 
       dispatch(postData(data))
       alert("Data added")
