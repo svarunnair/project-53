@@ -54,17 +54,19 @@ userControler.post("/login",async(req,res)=>{
 })
 
 userControler.post("/data",async(req,res)=>{
-    const {name,date,category,expense,amount}=req.body
+    const {name,date,category,expense,amount,email}=req.body
    
      const currentDate = new Date();
-      console.log("dataaaa",currentDate,name,date,category,expense,amount)
+      console.log("dataaaa",currentDate,name,date,category,expense,amount,email)
+
     const data = await DataModel({
            name,
             date,
             category,
             expense,
             amount,
-            update: currentDate
+            update: currentDate,
+            email
     })
     console.log("ddddddddddd",data)
     try{

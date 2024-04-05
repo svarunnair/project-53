@@ -51,16 +51,13 @@ function Edit() {
             expense:expense,
             category:category,
         }
-        // console.log("nnnnnnn",data)
+
         dispatch(patchData(data,id))
     alert("Data updated")
     navigate("/home")
     }
 
-    // useEffect(()=>{
-    //     dispatch(patchData(params.id))     
-    // },[])
-
+   
 
     console.log("paraaasIDDD",id)
     const handleCancel=()=>{

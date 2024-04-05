@@ -27,6 +27,11 @@ useEffect(()=>{
 },[])
 
 
+const localEmail=localStorage.getItem("email")
+
+console.log("emailllllllll",localEmail)
+
+
 
     const handleName=(e)=>{
         let value=e.target.value 
@@ -67,13 +72,15 @@ useEffect(()=>{
             expense:expense,
             amount:amount,
             update:updatedDate,
+            email:localEmail
 
       }
 // localStorage.setItem("data",JSON.stringify([...localData,data]))
       // localStorage.setItem("data",data)
 
       dispatch(postData(data))
-      // alert("Data added")
+      alert("Data added")
+      navigate("/home")
       }
       
     }

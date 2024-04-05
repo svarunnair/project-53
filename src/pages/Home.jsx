@@ -32,6 +32,7 @@ function Home() {
      const dispatch=useDispatch()
      const homeData=useSelector((store)=>store.data.getData)
      const [sort,setSort]=useState([homeData])
+     const [user,setUser]=useState("Me")
 
      const localData=localStorage.getItem("data")
      const parseData=JSON.parse(localData)||[]
@@ -45,7 +46,25 @@ function Home() {
 
      const localEmail=localStorage.getItem("email")
 
-     console.log("localEmail",localEmail)
+     const parseEmail=JSON.stringify(localEmail)
+
+     console.log("localEmail",parseEmail)
+
+
+     const creator=homeData.map((item)=>{
+      return item.email
+     })
+
+     useEffect(()=>{
+      if(creator===localEmail){
+        setUser(localEmail)
+      }
+
+     },[homeData])
+
+    
+
+     console.log("createrrrrrrrrrr",creator)
 
 
      useEffect(()=>{
@@ -139,7 +158,7 @@ function Home() {
               {item.update}
             </td>
              <td style={{border:"2px solid grey"}}>
-              {item.created}
+              {user}
             </td>
 
             <td style={{border:"",display:"flex", gap:"10px"}}>

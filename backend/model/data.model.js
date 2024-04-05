@@ -7,8 +7,9 @@ const DataSchema=mongoose.Schema({
     category:{type :String, required: true},
     expense:{type :String, required: true},
     amount:{type :String, required: true},
-      update:{type :String, required: false}
-      
+      update:{type :String, required: false},
+      email:{type :String, required: false}
+
 })
 
 const DataModel=mongoose.model("expense",DataSchema)
