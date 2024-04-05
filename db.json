@@ -1,0 +1,20 @@
+{
+    "data":[
+    {
+    "name": "varun",
+    "date":"2-1-2020",
+    "category":"health",
+    "expense":"200",
+    "amount":"200",
+    "update":"v@g"
+    },
+     {
+    "name": "kiran",
+    "date":"9-1-2020",
+    "category":"book",
+    "expense":"100",
+    "amount":"100",
+    "update":"k@g"
+    }
+]
+}

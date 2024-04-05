@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { patchData } from '../redux/data/action'
 
+
 function Edit() {
     const navigate=useNavigate()
     const params=useParams()
@@ -18,6 +19,8 @@ function Edit() {
     console.log("paramsdata",paramsData)
 
     const id=params.id
+
+    console.log("Paraaa",id)
 
     const handleName=(e)=>{
         let value=e.target.value 
@@ -39,25 +42,27 @@ function Edit() {
         let value=e.target.value 
         setDate(value)
     }
+   
     const handleCreate=()=>{
         let data={
             name:name,
             date:date,
             amount:amount,
             expense:expense,
-            category:category
+            category:category,
         }
+        // console.log("nnnnnnn",data)
         dispatch(patchData(data,id))
-     
-
+    alert("Data updated")
+    navigate("/home")
     }
 
-    useEffect(()=>{
-        dispatch(patchData(params.id))     
-    },[])
+    // useEffect(()=>{
+    //     dispatch(patchData(params.id))     
+    // },[])
 
 
-    console.log("paraaa",params.id)
+    console.log("paraaasIDDD",id)
     const handleCancel=()=>{
         navigate('/home')
     }
@@ -83,6 +88,7 @@ function Edit() {
     <div style={{display:"flex",justifyContent:"space-between",gap:60}}>
         <text>Category</text>
         <input onChange={handleCate} placeholder="category....."/>
+        {/* <Dropdown passValu={handleCategory}/> */}
     </div>
 <div style={{display:"flex",justifyContent:"space-between",gap:60}}>
         <text>Date of Expense</text>

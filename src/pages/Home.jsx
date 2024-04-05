@@ -6,14 +6,46 @@ import { deleteData, getData } from '../redux/data/action';
 
 
 
+// const mainData=[
+//     {
+//     "name": "varun",
+//     "date":"2-1-2020",
+//     "category":"health",
+//     "expense":"200",
+//     "amount":"200",
+//     "update":"v@g"
+//     },
+//      {
+//     "name": "kiran",
+//     "date":"9-1-2020",
+//     "category":"book",
+//     "expense":"100",
+//     "amount":"100",
+//     "update":"k@g"
+//     },
+// ]
+
+
+
 function Home() {
   const navigate=useNavigate()
      const dispatch=useDispatch()
      const homeData=useSelector((store)=>store.data.getData)
-     const [name,setName]=useState("")
-     const [date,setDate]=useState("")
+     const [sort,setSort]=useState([homeData])
 
-     console.log("homeData",homeData)
+     const localData=localStorage.getItem("data")
+     const parseData=JSON.parse(localData)||[]
+
+    //  console.log("LocalData",localData)
+
+    //  console.log("parseData",parseData)
+
+    //  console.log("...................",sort)
+
+
+     const localEmail=localStorage.getItem("email")
+
+     console.log("localEmail",localEmail)
 
 
      useEffect(()=>{
@@ -28,32 +60,42 @@ function Home() {
      }
 
      const handleDelete=(id)=>{
-      
+      // localStorage.removeItem()
       dispatch(deleteData(id))
-      console.log("DeleteIdd",id)
+      // console.log("DeleteIdd",id)
       alert("Data deleted")
       window.location.reload()
      }
 
-     let sortName=homeData.map((item)=>{
-      return item.name
+     const check=parseData.map((item)=>{
+      return item.id
      })
 
-     console.log("sort",sortName)
+     console.log("Ckec;;;;",check)
 
-const newName = sortName.sort((a, b) => {
-    return a.localeCompare(b);
-});
-
-console.log("After sorting:", newName);
 
      const handleFilterName=()=>{
-      setName(newName)
+   
+  let sortName = homeData.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
+ console.log("oooooooo",sortName)
+      setSort([...sortName])
      }
+
 
      const handleFilterDate=()=>{
+      let sortDate = homeData.sort((a, b) => {
+    return a.date.localeCompare(b.date);
+  });
+  console.log("MMMMMMMMMM",sortDate)
+  setSort(sortDate)
 
      }
+
+     useEffect(()=>{
+      setSort(homeData)
+     },[homeData])
 
 
 
@@ -79,7 +121,7 @@ console.log("After sorting:", newName);
 
       </thead>
       <tbody>
-        {homeData.map((item,index)=>(
+        {sort.map((item,index)=>(
           <tr style={{border:"2px solid grey"}}>
             <td style={{border:"2px solid grey"}}>
               {item.name}
@@ -101,8 +143,8 @@ console.log("After sorting:", newName);
             </td>
 
             <td style={{border:"",display:"flex", gap:"10px"}}>
-              <button onClick={()=>handleEdit(item._id)} style={{border:"2px solid grey",padding:5,borderRadius:10}}>Edit</button>
-               <button  style={{border:"2px solid grey",padding:5,borderRadius:10}}onClick={()=>handleDelete(item._id)}>Delete</button>
+              <button onClick={()=>handleEdit(item._id)} style={{background:"#B22222",color:"white",padding:8,borderRadius:12}}>Edit</button>
+               <button  style={{background:"#B22222",color:"white",padding:8,borderRadius:12}}onClick={()=>handleDelete(item._id)}>Delete</button>
             </td>
             
           </tr>

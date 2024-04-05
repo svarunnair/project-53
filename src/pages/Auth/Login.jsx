@@ -33,6 +33,7 @@ function Login() {
       password:password
     }
     dispatch(postLogin(data))
+    localStorage.setItem("email",email)
       alert("Login Successfull")
       navigate('/home')
     }

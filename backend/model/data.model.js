@@ -8,6 +8,7 @@ const DataSchema=mongoose.Schema({
     expense:{type :String, required: true},
     amount:{type :String, required: true},
       update:{type :String, required: false}
+      
 })
 
 const DataModel=mongoose.model("expense",DataSchema)
