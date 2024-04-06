@@ -30,7 +30,7 @@ function Home() {
      })
 
      useEffect(()=>{
-      if(creator===localEmail){
+      if(creator!==localEmail){
         setUser(localEmail)
       }
 
