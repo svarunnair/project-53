@@ -91,9 +91,9 @@ console.log("emailllllllll",localEmail)
        <div style={{padding:50, display:"flex",justifyContent:"center",flexDirection:"column",alignItems:"center"}}>
        <text style={{fontSize:25,fontWeight:500,padding:20}}>Add new Expense</text>
     
-        <div style={{display:"flex",justifyContent:"center",padding:40,border:'1px solid grey',borderRadius:30,width:"40%"}}>
+        <div class="w-70% md:w-70% lg:w-70%"  style={{display:"flex",justifyContent:"center",padding:40,border:'1px solid grey',borderRadius:30}}>
   
-<div style={{textAlign:"left",padding:20,gap:20,border:"",display:"flex",flexDirection:"column",}}>
+<div  style={{textAlign:"left",padding:20,gap:20,border:"",display:"flex",flexDirection:"column",}}>
      
 
         <label>Name</label>
