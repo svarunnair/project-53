@@ -1,8 +1,7 @@
 const express=require("express")
-// const { connection } = require("mongoose")
 const {connection} = require('./db')
 const {userControler}=require("./routes/user.routes")
-// const {dataController}=require("./routes/data.routes")
+
 
 const app=express()
 

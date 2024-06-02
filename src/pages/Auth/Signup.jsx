@@ -7,7 +7,7 @@ function Signup
 () {
 
   const [email,setEmail]=useState("")
-   const [isValidemail,setIsValidEmail]=useState("")
+  const [isValidemail,setIsValidEmail]=useState("")
   const [password,setPassword]=useState("")
   const [user,setUser]=useState("")
   const navigate=useNavigate()

@@ -39,7 +39,6 @@ userControler.get('/',async(req,res)=>{
 
 userControler.post("/login",async(req,res)=>{
     const {email}=req.body
-
     const user = await userModel.findOne({email})
     console.log("userrrrrrrrr",user)
     if(user!==null){
@@ -55,12 +54,9 @@ userControler.post("/login",async(req,res)=>{
 
 userControler.post("/data",async(req,res)=>{
     const {name,date,category,expense,amount,email}=req.body
-   
      const currentDate = new Date();
-      console.log("dataaaa",currentDate,name,date,category,expense,amount,email)
-
     const data = await DataModel({
-           name,
+            name,
             date,
             category,
             expense,
@@ -105,9 +101,6 @@ userControler.patch('/:userId',async(req,res)=>{
         res.send("couldn't updated")
     }
 })
-
-
-
 
 
 
