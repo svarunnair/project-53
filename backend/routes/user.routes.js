@@ -14,13 +14,21 @@ userControler.post('/',async(req,res)=>{
         email,
         password
     })
-     try {
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(email)){
+        res.send("Email is not valid")
+    }
+      try {
         await user.save();
         res.send({ message: "User saved successfully", user });
-    } catch (err) {
+      } catch (err) {
         console.log("err", err);
-        res.status(500).send({ error: "An error occurred while saving user data" });
-    }
+        res
+          .status(500)
+          .send({ error: "An error occurred while saving user data" });
+      }
 
 })
 
@@ -44,7 +52,7 @@ userControler.post("/login",async(req,res)=>{
     if(user!==null){
         const token = jwt.sign({ user:email }, process.env.SECRET);
         res.send("login successfull")
- console.log(token)
+        console.log(token)
  
     }
     else{
